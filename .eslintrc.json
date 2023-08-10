@@ -1,0 +1,87 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "no-prototype-builtins": "off",
+    "@typescript-eslint/ban-types": "off",
+    "wc/guard-super-call": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "lines-between-class-members": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "max-lines": [
+      "error",
+      {
+        "max": 500
+      }
+    ],
+    "import/order": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^react", "^@?\\w"],
+          ["^(@|components)(/.*|$)"],
+          ["^\\u0000"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          ["^\\.?(scss)$"]
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+      "typescript": {},
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["rollup.config.js", "web-test-runner.config.js"],
+      "env": {
+        "node": true
+      },
+      "globals": {
+        "cy": true
+      }
+    },
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    }
+  ]
+}

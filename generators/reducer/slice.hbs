@@ -1,0 +1,12 @@
+// Copyright © 2023 Dell Inc. or its subsidiaries. All Rights Reserved. /**
+{{properCase name}}
+reducer slice */ import {createSlice} from '@reduxjs/toolkit'; const
+{{camelCase name}}Slice = createSlice({ name: '{{camelCase name}}',
+initialState: {data:{}, loading: false, error: false}, reducers: {
+getAPIData(state, action) { return { ...state, ...action.payload, loading: true,
+error: false } }, getAPIDataSuccess(state, action) { return { ...state,
+...action.payload, loading: false, error: false } }, getAPIDataFailed(state,
+action) { return { ...state, ...action.payload, loading: false, error: true } },
+}, }); export const {actions} =
+{{camelCase name}}Slice; export default
+{{camelCase name}}Slice.reducer;

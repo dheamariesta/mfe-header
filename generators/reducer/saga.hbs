@@ -1,0 +1,12 @@
+// Copyright © 2023 Dell Inc. or its subsidiaries. All Rights Reserved. import
+{call, put, takeLatest} from 'redux-saga/effects'; import * as service from './{{camelCase
+  name
+}}Service.ts'; import {actions as
+{{camelCase name}}Actions} from './{{camelCase name}}Slice.ts'; export function*
+getData({payload}) { try { const data = yield call(service.fetchData, payload);
+yield put({{camelCase name}}Actions.getAPIDataSuccess(data)); } catch (error) {
+yield put({{camelCase name}}Actions.getAPIDataFailed({error})); } } //
+Individual exports export default function*
+{{camelCase name}}Saga() { yield takeLatest({{camelCase
+  name
+}}Actions.getAPIData, getData); }
